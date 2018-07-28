@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write index.html content</div>
+        
+ {/*内置的注释方法，这种方法在查看源代码时不会被看到，这样我们就可以做详细描述，而不至于被看到*/}
+<!--    eq neq gt> lt< egt>= elt<=用法一样 如果是两个变量比较value中的变量名必须加$符号--> 
+    {eq name='a' value="10"}
+    {else/}
+    {/eq}
+    <!--switch-->
+    {switch name='$Think.get.level'}
+        {case value='1|2'}<p>铜牌会员</p>{/case}
+        {case value='3'}<p>金牌会员</p>{/case}
+        {case value='4'}<p>钻石会员</p>{/case}
+        {default /}<p>游客</p>
+    {/switch}
+    <!--in notin between（value中只能有两个参数包含开始与结束）notbetween-->
+    {range name="$Think.get.level" value="1,2,3" type="in"}
+            <p>是1,2,3中的</p>
+        {else /}
+            <p>不是1,2,3中的</p>
+    {/range}
+    {in name="$Think.get.level" value="1,2,3"}
+        <p>是1,2,3中的</p>
+        {else/}
+             <p>不是1,2,3中的</p>
+    {/in}
+    <!--defined 判断变量是否定义-->
+    {defined name='APP_PATH'}
+    <p>已经定义</p>
+    {else/}
+    <p>未定义</p>
+    {/defined}
+    <!--if 不推荐使用 AND OR-->
+    {if condition="($Think.get.level == 1) AND ($Think.get.id == 10)"}
+    <p>值为1,id为10</p>
+    {else/}
+    <p>值不为1</p>
+    {/if}
+    </body>
+</html>
